@@ -92,6 +92,7 @@
 \providecommand\phantomsection{}
 
 \doublespacing
+\pgfplotsset{compat=1.18}
 \begin{document}
 \input{title_page.tex}
 \newpage
@@ -148,35 +149,220 @@ The \textbf{use-case} diagram of our application is as seen in \textbf{Figure} \
 \section{Use-Case Descriptions}
 % Add use-case descriptions per the given template %
 
-\subsection{Put name of the use-case here}
+\subsection{Sign-up}
 \begin{table}[H]
     \begin{center}
         \begin{tabular}{ |m{6cm}|p{6cm}| } 
            \hline
-           \textbf{ID} &  [Unique ID of this use case]\\
+           \textbf{ID} & 01\\
            \hline
-           \textbf{Title} &  [Enter the goal of the use case - preferably as a short, active verb phrase]\\
+           \textbf{Title} & Sign-up/Register for \textbf{Meri Raye}.\\
            \hline
-           \textbf{Description} &  [Describe the goal and context of this use case. This is usually an expanded version of what you entered in the "Title" field.]\\
+           \textbf{Description} & A new user is added with a unique username to the Meri Raye application.\\
            \hline
-           \textbf{Primary Actor} & [A person or a software/hardware system that interacts with your system to achieve the goal of this use case.] \\
+           \textbf{Primary Actor} & An unregistered user.\\
            \hline
-           \textbf{Preconditions} &  [Describe the state the system is in before the first event in this use case.]\\
+           \textbf{Preconditions} & The user being added must not already exist as a member of Meri Raye.\\
            \hline
-           \textbf{Postconditions} & [Describe the state the system is in after all the events in this use case have taken place.] \\
+           \textbf{Postconditions} & A new user is profile is created in the application with a unique username.\\
            \hline
-           \textbf{Main Success Scenario} & [Describe the flow of events from preconditions to postconditions, when nothing goes wrong. This is the meat of the use case.]\\
+           \textbf{Main Success Scenario} & We first verify that the user registering does not already exist. If he/she doesn't already exist, we create a new user profile with their given credentials (username) and allow them access to Meri Raye.\\
            \hline
-           \textbf{Extensions} &  [Describe all the other scenarios for this use case - including exceptions and error cases.]\\
+           \textbf{Extensions} & An error will occur when the user that is registering is already present as a member of Meri Raye.\\
            \hline
-           \textbf{Status} &  [Development status]\\
+           \textbf{Status} & In progress.\\
            \hline
-           \textbf{Priority} & [Priority of this use case] \\
+           \textbf{Priority} & High priority.\\
            \hline
         \end{tabular}
     \end{center}
-    \caption{\label{tab:Table 1} Detailed description for $<\textit{name-of-use-case}>$.}
+    \caption{\label{tab:Table 1} Detailed description for $<\textit{sign-up}>$.}
 \end{table}
 
+\newpage
+\subsection{Log-in}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 02\\
+           \hline
+           \textbf{Title} & Log into \textbf{Meri Raye}.\\
+           \hline
+           \textbf{Description} & A registered user is attempting to log into the application.\\
+           \hline
+           \textbf{Primary Actor} & A registered user.\\
+           \hline
+           \textbf{Preconditions} & The user being added must already exist as a member of Meri Raye.\\
+           \hline
+           \textbf{Postconditions} & The user is allowed to access the features of the application and their user profile, if he/she correctly inputs their username and password for the log in.\\
+           \hline
+           \textbf{Main Success Scenario} & We first verify that the user registering already exists. If he/she does already exist, we allow them access to their user profile and to the features of Meri Raye.\\
+           \hline
+           \textbf{Extensions} & An error will occur when the user that is logging in is not a member of Meri Raye, or they have input either their username or password incorrectly.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & High priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 2} Detailed description for $<\textit{log-in}>$.}
+\end{table}
+
+\newpage
+\subsection{Log-out}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 03\\
+           \hline
+           \textbf{Title} & Log out of \textbf{Meri Raye}.\\
+           \hline
+           \textbf{Description} & A registered user is attempting to log out of the application.\\
+           \hline
+           \textbf{Primary Actor} & A registered user.\\
+           \hline
+           \textbf{Preconditions} & The user who wants to log out must already be logged into the application.\\
+           \hline
+           \textbf{Postconditions} & The user is logged out of the application and can no longer view his/her user profile or access the features of the application.\\
+           \hline
+           \textbf{Main Success Scenario} & If the user is already logged into the application, then and only then is he/she allowed to log out of the application. After logging out he/she is returned to the log-in/sign-up screen and can no longer view his/her profile or use the features of the application.\\
+           \hline
+           \textbf{Extensions} & N/A.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & High priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 3} Detailed description for $<\textit{log-out}>$.}
+\end{table}
+
+\newpage
+\subsection{Search for a review}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 04\\
+           \hline
+           \textbf{Title} & Search for a review on the application.\\
+           \hline
+           \textbf{Description} & A registered user wants to search for a review on an item or wants to search for reviews in general for a category of his/her choice.\\
+           \hline
+           \textbf{Primary Actor} & A registered user.\\
+           \hline
+           \textbf{Preconditions} & The user who wants to search has input a keyword or chosen a category and has pressed the search button.\\
+           \hline
+           \textbf{Postconditions} & The user is presented with a list of search results according to the keyword he/she has entered or the category he/she has chosen.\\
+           \hline
+           \textbf{Main Success Scenario} & The user inputs a keyword or chooses a category of items he/she wants reviews on and presses the search button. The system searches for reviews according to the item or category that has been requested. If it finds reviews that match the search criteria, the user is presented with a list of the search results (i.e., reviews).\\
+           \hline
+           \textbf{Extensions} & An error will occur when the customer presses the search button before he/she has entered a keyword or chosen a category. \newline An error will occur when there are no reviews matching the search criteria of the user, in which case an error message is displayed.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & High priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 4} Detailed description for $<\textit{search for a review}>$.}
+\end{table}
+
+\newpage
+\subsection{Post a review}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 05\\
+           \hline
+           \textbf{Title} & Post a review on the application.\\
+           \hline
+           \textbf{Description} & A registered user wants to post a review on an item of his/her choice, with the option to add videos and pictures. A location and a category are mandatory with every review that is to be posted on the application.\\
+           \hline
+           \textbf{Primary Actor} & A registered user.\\
+           \hline
+           \textbf{Preconditions} & The user who wants to post a review on an item has drafted his/her review, added a location and a category and provided optional additional attachments. The user has then pressed the “post review” button.\\
+           \hline
+           \textbf{Postconditions} & The user is notified that their review has been successfully posted on the application.\\
+           \hline
+           \textbf{Main Success Scenario} & The user drafts their whole review on the item of their choice and have added a location and a category for the item they are reviewing (mandatory). They can also, additionally, choose to add a video and/or a photo to their review. Once their draft is complete, they have pressed the “post review” button. Their review is then posted on the application and a notification saying “successfully posted” is displayed to them.\\
+           \hline
+           \textbf{Extensions} & An error can occur when the customer omits adding either the location or the category in their review, since these are required for a review to be posted on the application.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & High priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 5} Detailed description for $<\textit{search for a review}>$.}
+\end{table}
+
+\newpage
+\subsection{Remove a user}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 06\\
+           \hline
+           \textbf{Title} & Remove a registered user from the application.\\
+           \hline
+           \textbf{Description} & An admin has the right to remove a registered user from the application at any time provided he/she has violated any of the rules and regulations.\\
+           \hline
+           \textbf{Primary Actor} & An admin.\\
+           \hline
+           \textbf{Preconditions} & The user to be removed is a registered user on the application and has violated any of the rules and regulations.\\
+           \hline
+           \textbf{Postconditions} & The user now no longer exists as a registered user of the application.\\
+           \hline
+           \textbf{Main Success Scenario} & The admin notices a registered user has violated a rule of the application. The admin therefore removes that user from the application.\\
+           \hline
+           \textbf{Extensions} & N/A.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & Medium priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 6} Detailed description for $<\textit{remove a user}>$.}
+\end{table}
+
+\newpage
+\subsection{Moderate a review}
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{ |m{6cm}|p{6cm}| } 
+           \hline
+           \textbf{ID} & 07\\
+           \hline
+           \textbf{Title} & Moderate a review on the application.\\
+           \hline
+           \textbf{Description} & A admin has to moderate a review on the application that a user has posted. This is to be done for every review that is posted.\\
+           \hline
+           \textbf{Primary Actor} & An admin.\\
+           \hline
+           \textbf{Preconditions} & A new review has been posted on the application by a registered user.\\
+           \hline
+           \textbf{Postconditions} & The review that was being moderated may be removed if it is found to be unethical, otherwise it will remain on the application.\\
+           \hline
+           \textbf{Main Success Scenario} & The admin moderates a newly posted review and decides on whether it is ethical.\\
+           \hline
+           \textbf{Extensions} & N/A.\\
+           \hline
+           \textbf{Status} & In progress.\\
+           \hline
+           \textbf{Priority} & Medium priority.\\
+           \hline
+        \end{tabular}
+    \end{center}
+    \caption{\label{tab:Table 7} Detailed description for $<\textit{moderate for a review}>$.}
+\end{table}
 
 \end{document}
