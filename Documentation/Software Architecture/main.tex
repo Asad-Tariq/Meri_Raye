@@ -1,0 +1,78 @@
+\documentclass[11pt]{extarticle}
+\usepackage[tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{framed}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{mathpazo}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\usepackage{footnotebackref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{lscape}
+
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=section,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
+
+\fancypagestyle{myheadings}
+{
+    \fancyhf{}
+    \renewcommand{\footrulewidth}{0pt}
+    \renewcommand{\headrulewidth}{0pt}
+    \cfoot{Page \thepage\ of \pageref*{LastPage}}    
+}
+
+\fancypagestyle{plain}
+{
+    \fancyhf{}
+    \chead{\small Delivery 06}
+    \lhead{\small CS 353}
+    \rhead{\small Spring 2022}
+    % \renewcommand{\footrulewidth}{0.5pt}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \cfoot{Page \thepage\ of \pageref*{LastPage}}    
+}
+
+\title{\textbf{Project Delivery 06}}
+\author{Aliza Rafique (05986); Asad Tariq (05439); Fahad Shaikh (05452); Faiz Haseeb (06224)}
+\date{$21^{st}$ March 2022}
+
+
+% Set formats for each heading level
+\titleformat*{\section}{\Large\bfseries\fontfamily{phv}\selectfont}
+\titleformat*{\subsection}{\large\bfseries\fontfamily{phv}\selectfont}
+\titleformat*{\subsubsection}{\itshape\subsubsectionfont}
+
+\providecommand\phantomsection{}
+
+\doublespacing
+\begin{document}
+\input{title_page.tex}
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\pagestyle{plain}
+
+\section{Chosen Architecture}
+
+\subsection{Layered Architecture}
+
+\subsection{Justification}
+
+
+\end{document}
