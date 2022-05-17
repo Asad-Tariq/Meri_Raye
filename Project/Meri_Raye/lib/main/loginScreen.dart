@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:meri_raye/Dashboard.dart';
 import 'package:meri_raye/main/signupScreen.dart';
 import 'package:meri_raye/main/Admin/adminDashboard.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,7 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Body()
     );
   }
@@ -28,13 +31,52 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  var email = 'test.user@gmail.com';
-  var pass = '789456';
   bool _isChecked = false;
-  bool isSwitched = false;
+  bool _isValid = false;
+  bool _isSwitched = false;
   bool _isObscure = true;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  Future login() async{
+    var user_login_url = "http://192.168.100.116/meri-raye/api/user/login.php";
+    var admin_login_url = "http://192.168.100.116/meri-raye/api/admin/login.php";
+    var url = "";
+
+    if (_isSwitched == true){
+      url = admin_login_url;
+    } else {
+      url = user_login_url;
+    }
+
+    http.Response response = await http.post(Uri.parse(url),
+        body: {
+          "email": _emailController.text,
+          "password": _passwordController.text,
+        });
+    var data = json.decode(response.body);
+    if (data == "Error") {
+      Fluttertoast.showToast(
+          msg: 'Invalid Credentials',
+          fontSize: 25,
+          textColor: Colors.red
+      );
+    } else {
+      Fluttertoast.showToast(
+          msg: 'Success',
+          fontSize: 25,
+          textColor: Colors.green
+      );
+      _isValid = true;
+    }
+
+    if (_isValid == true && _isSwitched == true){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const AdminDash()));
+    }
+    else if (_isValid == true && _isSwitched == false){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const Dashboard()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +84,7 @@ class _BodyState extends State<Body> {
       /// For the whole page
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(top: 8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: Image.asset("assets/images/sample.png", width: 90.0, height: 90.0,),
         ),
         Center(
@@ -57,7 +99,7 @@ class _BodyState extends State<Body> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Colors.grey,
                           offset: Offset(2.0, 2.0),
@@ -73,7 +115,7 @@ class _BodyState extends State<Body> {
                         Container(
                             alignment: Alignment.centerLeft,
                             width: 300,
-                            padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 10.0),
+                            padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 10.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
                             ),
@@ -86,7 +128,7 @@ class _BodyState extends State<Body> {
                                   });
                                 },
                                 cursorColor: Colors.black,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     labelStyle: TextStyle(color: Colors.black),
                                     hintText: 'Email address',
                                     contentPadding: EdgeInsets.all(20.0),
@@ -95,15 +137,15 @@ class _BodyState extends State<Body> {
                                     border: InputBorder.none
                                 ),
                               ),
-                              shadowColor: Color(0xFF12492F),
+                              shadowColor: const Color(0xFF12492F),
                               elevation: 10.0,
                             )
                         ),
-                        SizedBox(height: 15.0,),
+                        const SizedBox(height: 15.0,),
                         Container(
                             alignment: Alignment.centerLeft,
                             width: 300,
-                            padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 10.0),
+                            padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 10.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
                             ),
@@ -121,102 +163,96 @@ class _BodyState extends State<Body> {
                                   suffixIcon: IconButton(
                                     icon: Icon(_isObscure ? Icons.visibility : Icons
                                         .visibility_off),
-                                    color: Color(0xFF12492F),
+                                    color: const Color(0xFF12492F),
                                     onPressed: () {
                                       setState(() {
                                         _isObscure = !_isObscure;
                                       });
                                       },
                                   ),
-                                    labelStyle: TextStyle(color: Colors.black),
+                                    labelStyle: const TextStyle(color: Colors.black),
                                     hintText: 'Password',
-                                    contentPadding: EdgeInsets.all(20.0),
-                                    hintStyle: TextStyle(color: Colors.grey),
+                                    contentPadding: const EdgeInsets.all(20.0),
+                                    hintStyle: const TextStyle(color: Colors.grey),
                                     fillColor: Colors.white,
                                     border: InputBorder.none
                                 ),
                               ),
-                              shadowColor: Color(0xFF12492F),
+                              shadowColor: const Color(0xFF12492F),
                               elevation: 10.0,
                             )
                         ),
-                        SizedBox(width: 15.0,),
+                        const SizedBox(width: 15.0,),
                         TextButton(onPressed: (){},
-                            child: Text("Forgot Password?", style: TextStyle(color: Color(0xFF12492F),),)
+                            child: const Text("Forgot Password?", style: TextStyle(color: Color(0xFF12492F),),)
                         ),
                         Row(
                           /// for toggle
                           children: <Widget>[
                             Container(
                               alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.only(left: 15.0),
+                              padding: const EdgeInsets.only(left: 15.0),
                               child: Transform.scale(
                                 scale: 0.8,
                                 child: CupertinoSwitch(
-                                  value: isSwitched,
+                                  value: _isSwitched,
                                   onChanged: (value) {
                                     setState(() {
-                                      isSwitched = value;
+                                      _isSwitched = value;
                                     });
                                   },
-                                  activeColor: Color(0xFF12492F),
+                                  activeColor: const Color(0xFF12492F),
                                 ),
                               ),
                             ),
-                            Text("Login as Moderator"),
+                            const Text("Login as Moderator"),
                           ],
                         ),
                         Row(
                           /// for remember me
                           children: <Widget>[
                             Container(
-                              padding: EdgeInsets.only(left: 15.0),
+                              padding: const EdgeInsets.only(left: 15.0),
                               child: Checkbox(
-                                activeColor: Color(0xFF12492F),
+                                activeColor: const Color(0xFF12492F),
                                 value: _isChecked,
                                 onChanged: (value2) {
                                   _isChecked = value2!; },
                               ),
                             ),
-                            Text("Remember Me",
+                            const Text("Remember Me",
                                 style: TextStyle(
                                 )),
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
+                          padding: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              if (_emailController.text == email && _passwordController.text == pass){
-                                if (isSwitched){
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AdminDash()));
-                                } else{
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Dashboard()));
-                                }
-                              }
+                              login();
                             },
-                            child: Text("Sign In", style: TextStyle(fontSize: 16.0), textAlign: TextAlign.center,),
+                            child: const Text("Sign In", style: TextStyle(fontSize: 16.0), textAlign: TextAlign.center,),
                             style: ElevatedButton.styleFrom(
-                              minimumSize: Size(0, 45),
-                              shadowColor: Color(0xFF12492F),
+                              minimumSize: const Size(0, 45),
+                              shadowColor: const Color(0xFF12492F),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0)
                               ),
-                              primary: Color(0xFF12492F),
+                              primary: const Color(0xFF12492F),
                             ),
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+                          padding: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text("Don't have an account?", textAlign: TextAlign.center,),
+                              const Text("Don't have an account?", textAlign: TextAlign.center,),
                               TextButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const RegisterScreen()));
                                   },
-                                  child: Text("Sign Up",textAlign: TextAlign.center ,style: TextStyle(color: Color(0xFF12492F)),))
+                                  child: const Text("Sign Up",textAlign: TextAlign.center ,style: TextStyle(color: Color(0xFF12492F)),))
                             ],
                           ),
                         ),

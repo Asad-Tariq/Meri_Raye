@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meri_raye/temp/loginScreen.dart';
+import 'package:meri_raye/main/loginScreen.dart';
 import 'package:meri_raye/main/background.dart';
 
 class RegisterPage extends StatelessWidget {

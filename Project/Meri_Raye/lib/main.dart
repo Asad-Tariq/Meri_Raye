@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meri_raye/main/welcomePage.dart';
-import 'package:meri_raye/main/User/addPost.dart';
 void main() {
   runApp(MyApp());
 }
@@ -13,11 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Login',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF2661FA),
+        primaryColor: const Color(0xFF2661FA),
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AddPost(),
+      home: const WelcomePage(),
     );
   }
 }

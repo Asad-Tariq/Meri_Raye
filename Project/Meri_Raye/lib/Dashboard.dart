@@ -14,6 +14,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Dashboard",
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
             title: Text("Meri Raye", textAlign: TextAlign.center,),
