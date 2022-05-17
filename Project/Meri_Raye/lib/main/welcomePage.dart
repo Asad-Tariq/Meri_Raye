@@ -49,7 +49,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 },
                 style: ElevatedButton.styleFrom(
                   shadowColor: Colors.grey,
-                  primary: Color(0xFF0A2F35)
+                  primary: Color(0xFF12492F)
                 ),
                 child: Text('Sign In'),
               ),
@@ -61,8 +61,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
               },
               style: OutlinedButton.styleFrom(
-                primary: Color(0xFF0A2F35),
-                  side: BorderSide(width: 3.0, color: Color(0xFF0A2F35)),
+                primary: Color(0xFF12492F),
+                  side: BorderSide(width: 3.0, color: Color(0xFF12492F)),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
