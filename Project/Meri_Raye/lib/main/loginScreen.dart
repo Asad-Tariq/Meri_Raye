@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meri_raye/Dashboard.dart';
+import 'package:meri_raye/main/signupScreen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,7 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,),
       body: Body()
     );
   }
@@ -41,18 +41,18 @@ class _BodyState extends State<Body> {
       /// For the whole page
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(top: 10.0),
-          child: Image.asset("assets/images/sample.png", width: 100.0, height: 100.0,),
+          padding: EdgeInsets.only(top: 8.0),
+          child: Image.asset("assets/images/sample.png", width: 90.0, height: 90.0,),
         ),
         Center(
           /// Elevated container for login essentials
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 25.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5.0),
               child: Container(
-                  height: 400.0,
-                  margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0), //Same as `blurRadius` i guess
+                  height: 450.0,
+                  margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0), //Same as `blurRadius` i guess
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     color: Colors.white,
@@ -183,7 +183,7 @@ class _BodyState extends State<Body> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 10.0),
+                          padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
                           child: ElevatedButton(
                             onPressed: () {
                               if (_emailController.text == email && _passwordController.text == pass){
@@ -199,6 +199,20 @@ class _BodyState extends State<Body> {
                               ),
                               primary: Color(0xFF12492F),
                             ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Don't have an account?", textAlign: TextAlign.center,),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                                  },
+                                  child: Text("Sign Up",textAlign: TextAlign.center ,style: TextStyle(color: Color(0xFF12492F)),))
+                            ],
                           ),
                         ),
                       ],

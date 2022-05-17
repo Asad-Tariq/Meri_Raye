@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:meri_raye/main/login.dart';
-// import 'package:meri_raye/registerScreen.dart';
-import 'package:meri_raye/temp/loginScreen.dart';
-import 'package:meri_raye/main/signup.dart';
+import 'package:meri_raye/main/loginScreen.dart';
+import 'package:meri_raye/main/signupScreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -17,7 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.fromLTRB(80.0, 250.0, 80.0, 50.0),
+        padding: const EdgeInsets.fromLTRB(80.0, 250.0, 80.0, 50.0),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +47,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 },
                 style: ElevatedButton.styleFrom(
                   shadowColor: Colors.grey,
-                  primary: Color(0xFF0A2F35)
+                  primary: Color(0xFF12492F)
                 ),
                 child: Text('Sign In'),
               ),
@@ -61,8 +59,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
               },
               style: OutlinedButton.styleFrom(
-                primary: Color(0xFF0A2F35),
-                  side: BorderSide(width: 3.0, color: Color(0xFF0A2F35)),
+                primary: Color(0xFF12492F),
+                  side: BorderSide(width: 3.0, color: Color(0xFF12492F)),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
