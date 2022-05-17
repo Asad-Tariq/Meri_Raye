@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:meri_raye/main/login.dart';
-// import 'package:meri_raye/registerScreen.dart';
-import 'package:meri_raye/temp/loginScreen.dart';
-import 'package:meri_raye/main/signup.dart';
+import 'package:meri_raye/main/loginScreen.dart';
+import 'package:meri_raye/main/signupScreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -17,7 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.fromLTRB(80.0, 250.0, 80.0, 50.0),
+        padding: const EdgeInsets.fromLTRB(80.0, 250.0, 80.0, 50.0),
         child: Column(
           // crossAxisAlignment: CrossAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
