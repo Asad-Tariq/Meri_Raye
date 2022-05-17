@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meri_raye/Dashboard.dart';
 import 'package:meri_raye/main/signupScreen.dart';
+import 'package:meri_raye/main/Admin/adminDashboard.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -187,7 +188,11 @@ class _BodyState extends State<Body> {
                           child: ElevatedButton(
                             onPressed: () {
                               if (_emailController.text == email && _passwordController.text == pass){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                                if (isSwitched){
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AdminDash()));
+                                } else{
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Dashboard()));
+                                }
                               }
                             },
                             child: Text("Sign In", style: TextStyle(fontSize: 16.0), textAlign: TextAlign.center,),
@@ -209,7 +214,7 @@ class _BodyState extends State<Body> {
                               Text("Don't have an account?", textAlign: TextAlign.center,),
                               TextButton(
                                   onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => RegisterScreen()));
                                   },
                                   child: Text("Sign Up",textAlign: TextAlign.center ,style: TextStyle(color: Color(0xFF12492F)),))
                             ],

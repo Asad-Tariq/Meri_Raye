@@ -1,4 +1,4 @@
-# Meri Raye
+# meri_raye
 
 A new Flutter project.
 
