@@ -22,13 +22,12 @@ class _WelcomePageState extends State<WelcomePage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-                "Meri Raye",
+              "Meri Raye",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFF12492F),
-                fontWeight: FontWeight.bold,
-                fontSize: 50.0
-              ),
+                  color: Color(0xFF12492F),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50.0),
             ),
             Text(
               "Share your views with the world",
@@ -43,32 +42,57 @@ class _WelcomePageState extends State<WelcomePage> {
               width: 250.0,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
                 },
-                style: ElevatedButton.styleFrom(
-                  shadowColor: Colors.grey,
-                  primary: Color(0xFF12492F)
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Color(0xFF12492F),
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                  ),
                 ),
-                child: Text('Sign In'),
+                child: const Text(
+                  'Sign In',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                ),
               ),
             ),
-          SizedBox(
-            width: 250.0,
-            child: OutlinedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
-              },
-              style: OutlinedButton.styleFrom(
-                primary: Color(0xFF12492F),
-                  side: BorderSide(width: 3.0, color: Color(0xFF12492F)),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
+            SizedBox(
+              width: 250.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterScreen()));
+                },
+                style: ButtonStyle(
+                  // primary: Color(0xFF12492F),
+                  // side: BorderSide(width: 3.0, color: Color(0xFF12492F)),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Color(0xFF12492F)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                  ),
                 ),
-
+                child: const Text(
+                  "Sign Up",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                  ),
+                ),
               ),
-              child: const Text("Sign Up", style: TextStyle(color: Colors.black),),
             ),
-          ),
           ],
         ),
       ),
