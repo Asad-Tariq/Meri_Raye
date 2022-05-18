@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meri_raye/main/viewReview.dart';
+import 'package:meri_raye/main/User/addPost.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  // const Dashboard({Key? key}) : super(key: key);
+
+  String email;
+  Dashboard({required this.email,});
+
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -23,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
             backgroundColor: Color(0xFF0A2F35),),
           drawer: DrawerWork(),
           body: NewsFeed(),
-          bottomNavigationBar: BottomNavigation(),
+          bottomNavigationBar: BottomNavigation(email: widget.email),
 
           ),
         );
@@ -31,7 +35,9 @@ class _DashboardState extends State<Dashboard> {
 }
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+
+  String email;
+  BottomNavigation({required this.email,});
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
@@ -63,6 +69,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if (_selectedIndex == 2){
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AddPost(email: widget.email)));
+      }
     });
   }
   @override
@@ -80,7 +90,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
           label: 'Search',
-
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.post_add),
@@ -234,7 +243,6 @@ class _NewsFeedState extends State<NewsFeed> {
                           InkWell(
                             splashColor: Colors.blue.withAlpha(30),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ViewReview()));
                             },
                             child: Image.asset("assets/images/kaybees.jpg"),
                           ),

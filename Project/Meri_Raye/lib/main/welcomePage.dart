@@ -21,7 +21,7 @@ class _WelcomePageState extends State<WelcomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
+            const Text(
               "Meri Raye",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -29,7 +29,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   fontWeight: FontWeight.bold,
                   fontSize: 50.0),
             ),
-            Text(
+            const Text(
               "Share your views with the world",
               textAlign: TextAlign.center,
               style: TextStyle(

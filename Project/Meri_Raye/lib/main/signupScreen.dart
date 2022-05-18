@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:meri_raye/Dashboard.dart';
+import 'package:meri_raye/main/welcomePage.dart';
 import 'package:meri_raye/main/loginScreen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:http/http.dart' as http;
@@ -94,7 +94,7 @@ class _BodyState extends State<Body> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const Dashboard(),
+          builder: (context) => const WelcomePage(),
         ),
       );
     }
@@ -322,7 +322,7 @@ class _BodyState extends State<Body> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    Dashboard())),
+                                                    WelcomePage())),
                                         width: 120,
                                         color: Color(0xFF12492F),
                                       )

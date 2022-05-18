@@ -75,7 +75,7 @@ class _BodyState extends State<Body> {
           context, MaterialPageRoute(builder: (context) => const AdminDash()));
     } else if (_isValid == true && _isSwitched == false) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Dashboard()));
+          context, MaterialPageRoute(builder: (context) => Dashboard(email: _emailController.text)));
     }
   }
 
