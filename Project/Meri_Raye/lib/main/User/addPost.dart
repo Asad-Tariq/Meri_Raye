@@ -98,7 +98,7 @@ class _AddPostState extends State<AddPost> {
               ),
               child: Center(
                 child: DropdownButton<dynamic>(
-                  value: selectedName,
+                  value: null,
                   hint: const Text('Select Business',),
                   items: data.map((list){
                     return DropdownMenuItem(child: Text(list['name']), value: list['name'],);
