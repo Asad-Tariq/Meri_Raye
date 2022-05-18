@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meri_raye/main/welcomePage.dart';
+import 'package:meri_raye/main/User/addPost.dart';
 void main() {
   runApp(MyApp());
 }
